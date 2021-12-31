@@ -19,7 +19,7 @@ colnames(vaccine_data_copy)
 
 ## Including Plots
 
-You can also embed plots, for example:
+#You can also embed plots, for example:
 
 data.frame("Total_NA" = colSums(is.na(vaccine_data_copy))) %>%
     mutate ("Percentage_of_NA" = (colSums(is.na(vaccine_data_copy))/dim(vaccine_data_copy)[1]) %>% 
