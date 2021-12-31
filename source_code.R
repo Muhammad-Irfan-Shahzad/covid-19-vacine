@@ -1,19 +1,8 @@
----
-title: "Covid 19 Vaccine Analysis"
 
----
+#title: "Covid 19 Vaccine Analysis"
 
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
-```
 
-## R Markdown
 
-This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
-
-When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
-
-```{r}
 library(ggplot2)
 library(scales)
 library(tidyverse)
@@ -28,13 +17,10 @@ dim (vaccine_data)
 vaccine_data_copy <- vaccine_data[,1:13]
 colnames(vaccine_data_copy)
 
-```
-
 ## Including Plots
 
 You can also embed plots, for example:
 
-```{r }
 data.frame("Total_NA" = colSums(is.na(vaccine_data_copy))) %>%
     mutate ("Percentage_of_NA" = (colSums(is.na(vaccine_data_copy))/dim(vaccine_data_copy)[1]) %>% 
             round (3) * 100)
@@ -48,9 +34,6 @@ vaccine_data_copy <- vaccine_data_copy %>%
 
 unique(vaccine_data_copy$country)
 
-```
-
-```{r }
 vaccine_data_copy$vaccines <- str_replace_all(vaccine_data_copy$vaccines, " ","")
     # remove all spaces in between
     vaccine_val<- unique(vaccine_data_copy$vaccines)
@@ -75,9 +58,6 @@ vaccine_data_val[vaccine_data_val == TRUE] = 1
 vaccine_data_val[vaccine_data_val == FALSE] =0
 colnames(vaccine_data_val) <- paste0(unique(vaccine))
 
-```
-
-```{r }
 vaccine_in_countries<- vaccine_data_val %>%
 mutate(country = vaccine_data_copy$country)%>%
 group_by(country)%>%
@@ -91,6 +71,5 @@ labs(x = "Vaccines", y = "No. of Countries", title  = "Number of Countries using
 geom_text(aes(label = No_of_countries), vjust=-2.5)+
 theme_minimal()
 
-```
 
-Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
+#Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
